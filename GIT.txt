@@ -1,0 +1,89 @@
+####
+# Local Repository
+####
+git diff -> shows differences before files move to stage
+git diff --stage -> difference with staging files
+git reset HEAD <file> -> unstage file (HEAD is a reference to last commit on selected branch)
+git checkout -- <file> -> blow away all changes since last commit 
+git commit -a -m "comment here" -> shortcut for adding and commiting already tracked files
+--
+git reset --soft HEAD^ -> bring back last commited changes to staging
+git commit --amend -m "new comment" -> helps to add missing files or change files to current commit
+git reset --hard HEAD^ -> Undo last commit and all changes
+git reset --hard HEAD^^ -> undo last 2 commits and all changes
+
+####
+# Remote Repository
+####
+git remote add origin https://... -> adding remote repository where origin is a name of this repote rep
+git remote -v -> shows all remote git repos
+git push -u origin master -> push changes to remote repository where master is a branch name
+--
+git pull -> takes new data from remote host
+--
+git remote add <name> <address> -> add remote repo
+git remote rm <name> -> delete remote repo
+git push -u <name> <branch> -> push all changes to selected repo
+
+
+####
+# Merge repositories
+####
+git branch newRepoName -> create new reposytory
+git merge newRepoName -> is merging newRepoName to master
+git branch -d newRepoName -> remove branch which name is newRepoName
+--
+git checkout -b branchName -> shortcut for creating new branch and start working on it
+
+####
+# Solving issues
+####
+git pull === git fetch -> they take data from remote branch but "git pull" merge with local branch, "git fetch" just take update to local branch without merging
+
+####
+# git remote branching
+####
+git checkout -b newBranch -> create and swtich to newBranch
+git push origin newBranch -> push new branch to remote repository
+git branch -r -> show all remote branches
+git remote show origin -> list all important information about branches in origin remote branch
+git push origin :newBranch -> delete newBranch on remote server
+git remote prune origin -> clean up deleted remote branches
+--
+git tag -> list all list of tags
+git checkout v0.0.1 -> checkout files to version 0.0.1
+git tag -a v0.0.3 -m "version 0.0.3" -> add new tag
+git push --tags -> push new tag
+--
+git rebase -> when you have two branches and want to get changes from external on and add yours you, need to switch to your branch and use "git rebase master"
+git rebase --continue
+git rebase --skip
+git rebase --abort
+--
+git rebase -i HEAD~3 -> redo 3 last comits
+
+####
+# History and configuration
+####
+
+git config --gloabl colour.ui true -> adds color for SHA
+git log --pretty=online -> reformat log output
+git log --oneline --stat -> shows you how many times file was changed
+git log --oneline --graph -> shows extra branches and merges in more graphical way
+git log --since=2017-01-01 --until=2017-05-012 -> show logs from to
+git log -p -> shows changes on files in last commit session
+--
+git diff HEAD^ -> compare local file with commited file, (^) means parent of latest commit (^^) second last commit, (HEAD~5) compare with version from five commits ago
+git diff master differentBranch -> shows differences between master and diff... branch
+--
+git blame fileName --date short -> will show all changes line by line when they were changed and by who
+
+####
+# Git Removing
+####
+
+git rm fileName -> remove file, from local filesystem and untrack
+git commit -m "Remove fileName" -> removal need to be commited
+git rm --cache nameFile -> untrack file ( if you deleted it manually or don't want to track any more )
+git config --global alias.st status -> use 'git st' === 'git status' 
+
